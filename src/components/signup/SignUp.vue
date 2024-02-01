@@ -2,7 +2,7 @@
     <div class="container">
         <form @click.prevent>
             <div class="row g-3 align-items-center">
-                <h1>Sign Up</h1>
+                <h1 class="text-center pt-2">Sign Up</h1>
                 <div class="col-auto d-block mx-auto">
                     <input type="text" class="form-control" placeholder="Enter Your Name" v-model="name">
                     <span class="text-danger" v-if="v$.name.$error">{{ v$.name.$errors[0].$message }}</span>
@@ -35,11 +35,19 @@
 </template>
 
 <script>
+import axios from 'axios';
 import { mapActions } from 'vuex';
 import useValidate from "@vuelidate/core";
 import { required, email, minLength } from "@vuelidate/validators";
 export default {
     name: 'SignUp',
+    mounted() {
+        let user = localStorage.getItem("user_info");
+        if (user) {
+            // Redirect to Home page
+            this.redirectTo({val: 'home'});
+        }
+    },
     data() {
         return {
             v$: useValidate(),
@@ -57,10 +65,24 @@ export default {
     },
     methods: {
         ...mapActions(['redirectTo']),
-        SignUpNow() {
+        async SignUpNow() {
             this.v$.$validate();
             if (!this.v$.$error) {
                 console.log('Form Validated Successfully');
+                let result = await axios.post('http://localhost:3000/users', {
+                    name: this.name,
+                    email: this.email,
+                    password: this.pass,
+                });
+                if (result.status = 201) {
+                    console.log('Added New User Successfully');
+                    // Save user data in local storage
+                    localStorage.setItem("user_info", JSON.stringify(result.data));
+                    // Redirect to Home page
+                    this.redirectTo({val: 'home'});
+                } else {
+                    console.log('Error on adding new user');
+                }
             } else {
                 console.log('Form Validation Failed');
             }

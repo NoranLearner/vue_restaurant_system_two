@@ -1,6 +1,6 @@
 <template>
     <nav>
-        <router-link :to="{ name: 'home', params: { pageTitle: 'Home Page' } }" aria-current="page" exact>
+        <router-link :to="{ name: 'home' }" aria-current="page" exact>
             Home
         </router-link>
         <router-link :to="{name:'about'}">About</router-link>

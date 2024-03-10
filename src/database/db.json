@@ -11,6 +11,12 @@
       "name": "Ahmed Ahmed",
       "email": "ahmed@123.com",
       "password": "1234567890"
+    },
+    {
+      "id": "30ba",
+      "name": "noran mostafa",
+      "email": "noran@gmail.com",
+      "password": "1234567890"
     }
   ]
 }

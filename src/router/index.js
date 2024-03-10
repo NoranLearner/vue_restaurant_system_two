@@ -3,13 +3,17 @@ import HomeView from '../views/HomeView.vue'
 import SignUpView from '../views/SignUpView.vue'
 import LoginView from '../views/LoginView.vue'
 import ProfileView from '../views/ProfileView.vue'
+import ErrorPageView from '../views/ErrorPageView.vue'
 import UpdateProfileView from '../views/UpdateProfileView.vue'
 
 const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: HomeView,
+    meta:{
+      title: 'Home',
+    }
   },
   {
     path: '/about',
@@ -39,11 +43,34 @@ const routes = [
     name: 'update-profile',
     component: UpdateProfileView
   },
+  // Stays Last
+  {
+    path: '/:catchAll(.*)',
+    name: 'error-page',
+    component: ErrorPageView,
+  },
 ]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
-})
+});
+
+router.beforeEach((to, from, next) => {
+
+  // https://www.youtube.com/watch?v=W6qpsmkuJ8c
+
+  if(to.meta.title !== undefined){
+    document.title = `${to.name} | ${to.meta.title} | ${process.env.VUE_APP_TITLE}`;
+  } else {
+    if(to.name == null){
+      document.title = `Unknown Page | ${process.env.VUE_APP_TITLE}`;
+    } else{
+      document.title = `${to.name} | ${process.env.VUE_APP_TITLE}`;
+    }
+  }
+
+  next();
+});
 
 export default router

@@ -17,6 +17,28 @@
       "name": "noran mostafa",
       "email": "noran@gmail.com",
       "password": "1234567890"
+    },
+    {
+      "id": "fa60"
+    },
+    {
+      "id": "8431"
+    }
+  ],
+  "locations": [
+    {
+      "id": "fec1",
+      "name": "Hooks Fish and Chips",
+      "phone": "12345678901",
+      "address": "Minneapolis,Minnesota",
+      "userId": "30ba"
+    },
+    {
+      "id": "a66b",
+      "name": "Elshamy Restaurant",
+      "phone": "123.456.789",
+      "address": "Cairo",
+      "userId": "30ba"
     }
   ]
 }

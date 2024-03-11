@@ -14,7 +14,11 @@
       </router-link>
     </p>
 
-    <AddNewLocation />
+    <router-link :to="{ name: 'AddNewLocation' }">
+      <button type="button" class="btn btn-primary">
+        Add New Restaurant
+      </button>
+    </router-link>
 
     <UserLocations :allLocations="listOfLocations" />
 
@@ -25,8 +29,6 @@
 <script>
 
 import Navbar from '@/components/header/Navbar.vue';
-
-import AddNewLocation from '@/components/locations/AddNewLocation.vue';
 
 import { mapActions } from 'vuex';
 
@@ -64,7 +66,6 @@ export default {
 
   components: {
     Navbar,
-    AddNewLocation,
     UserLocations,
   },
 

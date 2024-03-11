@@ -1,12 +1,6 @@
 {
   "users": [
     {
-      "name": "noran mostafa",
-      "email": "noran@gmail.com",
-      "password": "1234567890",
-      "id": "1"
-    },
-    {
       "id": "2",
       "name": "Ahmed Ahmed",
       "email": "ahmed@123.com",
@@ -19,10 +13,10 @@
       "password": "1234567890"
     },
     {
-      "id": "fa60"
-    },
-    {
-      "id": "8431"
+      "id": "913c",
+      "name": "nor mostafa",
+      "email": "nor@gmail.com",
+      "password": "1234567890"
     }
   ],
   "locations": [
@@ -39,6 +33,20 @@
       "phone": "123.456.789",
       "address": "Cairo",
       "userId": "30ba"
+    },
+    {
+      "id": "86e4",
+      "name": "Noreldin Restaurant",
+      "phone": "123.456.789",
+      "address": "Taha Elhakim",
+      "userId": "913c"
+    },
+    {
+      "id": "7eca",
+      "name": "Sory Restaurant",
+      "phone": "123.456.789",
+      "address": "Elnady",
+      "userId": "913c"
     }
   ]
 }

@@ -1,80 +1,56 @@
 <template>
 
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Add New Restaurant
-    </button>
+    <Navbar />
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <h1 class="fs-5 text-center mb-3 text-info">Add New Restaurant</h1>
 
-        <div class="modal-dialog">
+    <form @click.prevent>
 
-            <div class="modal-content">
-
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Restaurant</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-
-                <div class="modal-body">
-
-                    <form @click.prevent>
-
-                        <div class="row g-3 align-items-center">
-                            <div class="col-auto d-block mx-auto">
-                                <input type="text" class="form-control" placeholder="Restaurant Name"
-                                    v-model.trim="state.name">
-                                <span class="text-danger" v-if="v$.name.$error">{{ v$.name.$errors[0].$message }}</span>
-                            </div>
-                        </div>
-                        <br />
-                        <div class="row g-3 align-items-center">
-                            <div class="col-auto d-block mx-auto">
-                                <input type="text" class="form-control" placeholder="Phone Number"
-                                    v-model.trim="state.phone">
-                                <span class="text-danger" v-if="v$.phone.$error">{{ v$.phone.$errors[0].$message
-                                    }}</span>
-                            </div>
-                        </div>
-                        <br />
-                        <div class="row g-3 align-items-center">
-                            <div class="col-auto d-block mx-auto">
-                                <input type="text" class="form-control" placeholder="Restaurant Address"
-                                    v-model.trim="state.address">
-                                <span class="text-danger" v-if="v$.address.$error">{{ v$.address.$errors[0].$message
-                                    }}</span>
-                            </div>
-                        </div>
-                        <br />
-                        <div class="row g-3 align-items-center">
-                            <!-- {{ UserNotFoundError }} -->
-                            <div class="col-auto d-block mx-auto alert alert-success" v-if="successMessage.length > 0">
-                                {{ successMessage }}
-                            </div>
-                            <div class="col-auto d-block mx-auto alert alert-danger" v-if="errorMessage.length > 0">
-                                {{ errorMessage }}
-                            </div>
-                        </div>
-
-                    </form>
-
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" @click="addLocation()">Add Now</button>
-                </div>
-
+        <div class="row g-3 align-items-center">
+            <div class="col-auto d-block mx-auto">
+                <input type="text" class="form-control" placeholder="Restaurant Name" v-model.trim="state.name">
+                <span class="text-danger" v-if="v$.name.$error">{{ v$.name.$errors[0].$message }}</span>
             </div>
-
+        </div>
+        <br />
+        <div class="row g-3 align-items-center">
+            <div class="col-auto d-block mx-auto">
+                <input type="text" class="form-control" placeholder="Phone Number" v-model.trim="state.phone">
+                <span class="text-danger" v-if="v$.phone.$error">{{ v$.phone.$errors[0].$message
+                    }}</span>
+            </div>
+        </div>
+        <br />
+        <div class="row g-3 align-items-center">
+            <div class="col-auto d-block mx-auto">
+                <input type="text" class="form-control" placeholder="Restaurant Address" v-model.trim="state.address">
+                <span class="text-danger" v-if="v$.address.$error">{{ v$.address.$errors[0].$message
+                    }}</span>
+            </div>
+        </div>
+        <br />
+        <div class="row g-3 align-items-center">
+            <div class="col-auto d-block mx-auto alert alert-success" v-if="successMessage.length > 0">
+                {{ successMessage }}
+            </div>
+            <div class="col-auto d-block mx-auto alert alert-danger" v-if="errorMessage.length > 0">
+                {{ errorMessage }}
+            </div>
+        </div>
+        <br />
+        <div class="row g-3 align-items-center">
+            <div class="col-auto d-block mx-auto">
+                <button type="button" class="btn btn-primary" @click="addLocation()">Add Now</button>
+            </div>
         </div>
 
-    </div>
+    </form>
 
 </template>
 
 <script>
+
+import Navbar from '@/components/header/Navbar.vue';
 
 // For validate data
 import useValidate from "@vuelidate/core";
@@ -125,10 +101,13 @@ export default {
     data() {
         return {
             userId: "",
-            // UserNotFoundError: "",
             successMessage: "",
             errorMessage: "",
         }
+    },
+
+    components: {
+        Navbar,
     },
 
     methods: {
@@ -146,28 +125,17 @@ export default {
                 });
                 if (result.status = 201) {
                     // Show Success Message
-                    // this.UserNotFoundError = 'Good Job';
                     this.errorMessage = '';
                     this.successMessage = 'Added New Location';
-                    this.redirectTo({ val: "home" });
                     setTimeout(() => {
-                        this.successMessage = '';
-                        this.errorMessage = '';
-                        this.state.name = '';
-                        this.state.phone = '';
-                        this.state.address = '';
-                        this.v$.name.$errors[0].$message = '';
-                        this.v$.phone.$errors[0].$message = '';
-                        this.v$.address.$errors[0].$message = '';
+                        this.redirectTo({ val: "home" });
                     }, 2000);
                 } else {
                     // Show Error Message
-                    // this.UserNotFoundError = 'Something went wrong, try again';
                     this.successMessage = '';
                     this.errorMessage = 'Something went wrong, Try Again';
                 }
             } else {
-                // console.warn("Form Validation Failed");
                 this.successMessage = '';
                 this.errorMessage = 'You must fill in all required fields';
             }

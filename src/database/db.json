@@ -42,10 +42,17 @@
       "userId": "913c"
     },
     {
-      "id": "7eca",
+      "id": "362d",
       "name": "Sory Restaurant",
-      "phone": "123.456.789",
+      "phone": "01234567891",
       "address": "Elnady",
+      "userId": "913c"
+    },
+    {
+      "id": "c77c",
+      "name": "Burger King",
+      "phone": "12345678912",
+      "address": "Cairo",
       "userId": "913c"
     }
   ]

@@ -5,6 +5,7 @@ import LoginView from '../views/LoginView.vue'
 import ProfileView from '../views/ProfileView.vue'
 import UpdateProfileView from '../views/UpdateProfileView.vue'
 import AddNewLocation from '@/components/locations/AddNewLocation.vue'
+import DeleteLocation from '@/components/locations/DeleteLocation.vue'
 import ErrorPageView from '../views/ErrorPageView.vue'
 
 const routes = [
@@ -48,6 +49,11 @@ const routes = [
     path: '/add-new-location',
     name: 'AddNewLocation',
     component: AddNewLocation
+  },
+  {
+    path: '/delete-location/:locationId',
+    name: 'DeleteLocation',
+    component: DeleteLocation
   },
   // Stays Last
   {

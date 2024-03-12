@@ -5,6 +5,11 @@
             <span>
                 List Of Locations ({{ allLocations.length }})
             </span>
+            <span class="float-end">
+                <router-link :to="{name: 'DeleteAllLocations'}">
+                    <button class="btn btn-danger">Delete All Restaurants</button>
+                </router-link>
+            </span>
         </caption>
         <thead class="table-light">
             <tr>

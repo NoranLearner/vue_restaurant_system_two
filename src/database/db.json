@@ -60,16 +60,19 @@
     {
       "id": "1",
       "name": "Breakfast",
+      "locationId" : "c77c",
       "userId": "913c"
     },
     {
       "id": "2",
       "name": "Lunch",
+      "locationId" : "c77c",
       "userId": "913c"
     },
     {
       "id": "3",
       "name": "Dinner",
+      "locationId" : "c77c",
       "userId": "913c"
     }
   ],

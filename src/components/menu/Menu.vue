@@ -42,6 +42,7 @@ export default {
         return {
             userId: "",
             userName: "",
+            locationId: "",
         }
     },
 
@@ -51,7 +52,8 @@ export default {
             this.userId = JSON.parse(user).id;
             this.userName = JSON.parse(user).name;
             this.isLoggedInUser();
-            this.displayAllCategories({ userIdIs: this.userId });
+            this.locationId = this.$route.params.locationId;
+            this.displayAllCategories({ userIdIs: this.userId , locationIdIs: this.locationId });
         }
         else {
             // Redirect to Sign Up page

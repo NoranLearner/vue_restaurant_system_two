@@ -26,7 +26,7 @@ const mutations = {
     }
   },
   async displayAllCategories(state, payload){
-    let result = await axios.get(`http://localhost:3000/categories?userId=${payload.userIdIs}`);
+    let result = await axios.get(`http://localhost:3000/categories?userId=${payload.userIdIs}&locationId=${payload.locationIdIs}`);
     if (result.status == 200) {
       state.listOfCategories = result.data;
       state.numOfCategories = state.listOfCategories.length;

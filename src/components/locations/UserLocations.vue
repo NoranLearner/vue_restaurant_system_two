@@ -33,7 +33,7 @@
                         <button class="btn btn-info text-white">Update</button>
                     </router-link>
                     &nbsp;
-                    <router-link :to="{name: 'Menu'}">
+                    <router-link :to="{name: 'Menu' , params: {locationId : loc.id}}">
                         <button class="btn btn-secondary text-white">Menu</button>
                     </router-link>
                 </td>

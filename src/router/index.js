@@ -69,7 +69,7 @@ const routes = [
     component: UpdateLocation
   },
   {
-    path: '/menu',
+    path: '/menu/location/:locationId',
     name: 'Menu',
     component: Menu
   },

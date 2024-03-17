@@ -9,6 +9,8 @@ import DeleteLocation from '@/components/locations/DeleteLocation.vue'
 import DeleteAllLocations from '@/components/locations/DeleteAllLocations.vue'
 import UpdateLocation from '@/components/locations/UpdateLocation.vue'
 import Menu from '@/components/menu/Menu.vue'
+import ViewCategories from '@/components/menu/ViewCategories.vue'
+import AddNewCategory from '@/components/menu/AddNewCategory.vue'
 import ErrorPageView from '../views/ErrorPageView.vue'
 
 const routes = [
@@ -72,6 +74,16 @@ const routes = [
     path: '/menu/location/:locationId',
     name: 'Menu',
     component: Menu
+  },
+  {
+    path: '/menu/categories/view/:locationId',
+    name: 'ViewCategories',
+    component: ViewCategories
+  },
+  {
+    path: '/menu/categories/add/:locationId',
+    name: 'AddNewCategory',
+    component: AddNewCategory
   },
   // Stays Last
   {

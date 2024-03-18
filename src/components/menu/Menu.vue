@@ -16,6 +16,11 @@
 
         <div class="clearfix"></div>
 
+        <div class="text-center">
+            <h1>{{ locName }}</h1>
+            <p class="text-muted">{{ locAddress }}</p>
+        </div>
+
         <!-- <div>
             Is User Logged In? {{ isUserLoggedIn }}
             <br />
@@ -36,6 +41,8 @@ import Navbar from '@/components/header/Navbar.vue';
 
 import { mapState, mapActions, mapMutations } from 'vuex';
 
+import axios from 'axios';
+
 export default {
 
     name: "Menu",
@@ -46,6 +53,8 @@ export default {
             userName: "",
             // locationId: "",
             locationId: this.$route.params.locationId,
+            locName: '',
+            locAddress: '',
         }
     },
 
@@ -58,6 +67,7 @@ export default {
             // this.locationId = this.$route.params.locationId;
             this.displayAllCategories({ userIdIs: this.userId, locationIdIs: this.locationId });
             this.CanUserAccessThisLocation({ userIdIs: this.userId, locationIdIs: this.locationId, redirectToPage: "home" });
+            this.getLocationInfo(this.userId, this.locationId);
         }
         else {
             // Redirect to Sign Up page
@@ -76,6 +86,15 @@ export default {
     methods: {
         ...mapActions(['redirectTo']),
         ...mapMutations(['isLoggedInUser', 'displayAllCategories', 'CanUserAccessThisLocation']),
+        async getLocationInfo(userId, locationId) {
+            let result = await axios.get(`http://localhost:3000/locations?id=${this.locationId}&userId=${this.userId}`);
+            let locDetails = [];
+            if (result.status == 200 && result.data.length > 0) {
+                locDetails = result.data;
+                this.locName = locDetails[0].name;
+                this.locAddress = locDetails[0].address;
+            }
+        },
     },
 
 }

@@ -11,6 +11,7 @@ import UpdateLocation from '@/components/locations/UpdateLocation.vue'
 import Menu from '@/components/menu/Menu.vue'
 import ViewCategories from '@/components/menu/ViewCategories.vue'
 import AddNewCategory from '@/components/menu/AddNewCategory.vue'
+import UpdateCategory from '@/components/menu/UpdateCategory.vue'
 import ErrorPageView from '../views/ErrorPageView.vue'
 
 const routes = [
@@ -84,6 +85,11 @@ const routes = [
     path: '/menu/categories/add/:locationId',
     name: 'AddNewCategory',
     component: AddNewCategory
+  },
+  {
+    path: '/menu/categories/update/:locationId/:catId',
+    name: 'UpdateCategory',
+    component: UpdateCategory
   },
   // Stays Last
   {

@@ -94,5 +94,26 @@
       "locationId": "c77c"
     }
   ],
-  "items": []
+  "items": [
+    {
+      "name": "Tuna Sandwich",
+      "price": "90.00",
+      "qty": 40,
+      "description": "Best Tuna Sandwich",
+      "catId": "2",
+      "locId": "a66b",
+      "userId": "30ba",
+      "id": "1"
+    },
+    {
+      "name": "Burger Sandwich",
+      "price": "50.00",
+      "qty": 60,
+      "description": "Good Food",
+      "catId": "2",
+      "locId": "c77c",
+      "userId": "913c",
+      "id": "2"
+    }
+  ]
 }

@@ -49,10 +49,10 @@
                             <button class="btn btn-success text-white">Update</button>
                         </router-link>
                         &nbsp;
-                        <!-- <router-link
-                            :to="{ name: 'delete-category', params: { catId: cat.id, locationId: cat.locationId } }">
+                        <router-link
+                            :to="{ name: 'DeleteCategory', params: { catId: cat.id, locationId: cat.locationId } }">
                             <button class="btn btn-danger text-white">Delete</button>
-                        </router-link> -->
+                        </router-link>
                         &nbsp;
                     </td>
                 </tr>

@@ -1,44 +1,49 @@
 <template>
 
-    <Navbar />
+    <div class="container">
 
-    <form @click.prevent>
+        <Navbar />
 
-        <div class="row g-3 align-items-center">
-            <div class="col-auto d-block mx-auto">
-                <h1 class="fs-5 text-center mb-3 text-danger">Delete Restaurant #{{ deleteLocation }}</h1>
-                <p class="text-danger fw-bolder">Are you sure you want to delete this location?</p>
-                <div class="text-center">
-                    {{ name }}
-                    <br />
-                    {{ phone }}
-                    <br />
-                    {{ address }}
+        <form @click.prevent>
+
+            <div class="row g-3 align-items-center">
+                <div class="col-auto d-block mx-auto">
+                    <h1 class="fs-5 text-center mb-3 text-danger">Delete Restaurant #{{ deleteLocation }}</h1>
+                    <p class="text-danger fw-bolder">Are you sure you want to delete this location?</p>
+                    <div class="text-center">
+                        {{ name }}
+                        <br />
+                        {{ phone }}
+                        <br />
+                        {{ address }}
+                    </div>
+                    <hr />
                 </div>
-                <hr />
             </div>
-        </div>
 
-        <div class="row g-3 align-items-center">
-            <div class="col-auto d-block mx-auto">
-                <button type="button" class="btn btn-info text-white" @click="goBack()">Go Back</button>
-                &nbsp;
-                <button type="button" class="btn btn-danger text-white" @click="deleteRestaurant()">Delete Now</button>
+            <div class="row g-3 align-items-center">
+                <div class="col-auto d-block mx-auto">
+                    <button type="button" class="btn btn-info text-white" @click="goBack()">Go Back</button>
+                    &nbsp;
+                    <button type="button" class="btn btn-danger text-white" @click="deleteRestaurant()">Delete
+                        Now</button>
+                </div>
             </div>
-        </div>
 
-        <br />
+            <br />
 
-        <div class="row g-3 align-items-center">
-            <div class="col-auto d-block mx-auto alert alert-success" v-if="successMessage.length > 0">
-                {{ successMessage }}
+            <div class="row g-3 align-items-center">
+                <div class="col-auto d-block mx-auto alert alert-success" v-if="successMessage.length > 0">
+                    {{ successMessage }}
+                </div>
+                <div class="col-auto d-block mx-auto alert alert-danger" v-if="errorMessage.length > 0">
+                    {{ errorMessage }}
+                </div>
             </div>
-            <div class="col-auto d-block mx-auto alert alert-danger" v-if="errorMessage.length > 0">
-                {{ errorMessage }}
-            </div>
-        </div>
 
-    </form>
+        </form>
+
+    </div>
 
 </template>
 
@@ -64,15 +69,32 @@ export default {
             locationData: [],
             successMessage: '',
             errorMessage: '',
+            allItemsIdIs: [],
+            allCatsIdIs: [],
         }
     },
 
-    mounted() {
+    async mounted() {
         let user = localStorage.getItem("user_info");
         if (user) {
             this.deleteLocation = this.$route.params.locationId;
             this.userId = JSON.parse(user).id;
             this.canCurrentUserAccessThisLocation();
+            // All Items in This Location
+            // http://localhost:3000/items?locId=3
+            let result = await axios.get(`http://localhost:3000/items?locationId=${this.locationId}`);
+            let resultLength = result.data.length;
+            for (var i = 0; i < resultLength; i++) {
+                this.allItemsIdIs.push(result.data[i].id);
+            }
+            // All Categories in This Location
+            // http://localhost:3000/categories?locationId=3
+            // write locId or locationId depend on db.json file (database)
+            let resultCat = await axios.get(`http://localhost:3000/categories?locationId=${this.locationId}`);
+            let resultCatLength = resultCat.data.length;
+            for (var i = 0; i < resultCatLength; i++) {
+                this.allCatsIdIs.push(resultCat.data[i].id);
+            }
         }
         else {
             // Redirect to Sign Up page
@@ -102,8 +124,33 @@ export default {
             }
         },
         async deleteRestaurant() {
+
+            // For Items
+            let allItemsResults = [];
+            for (var i = 0; i < this.allItemsIdIs.length; i++) {
+                let result = await axios.delete(`http://localhost:3000/items/${this.allItemsIdIs[i]}`);
+                if (result.status == 200) {
+                    allItemsResults.push(true);
+                } else {
+                    allItemsResults.push(false);
+                }
+            }
+
+            // For Categories
+            let allCatsResults = [];
+            for (var i = 0; i < this.allCatsIdIs.length; i++) {
+                let result = await axios.delete(`http://localhost:3000/categories/${this.allCatsIdIs[i]}`);
+                if (result.status == 200) {
+                    allCatsResults.push(true);
+                } else {
+                    allCatsResults.push(false);
+                }
+            }
+
+            // For Location
+
             let result = await axios.delete(`http://localhost:3000/locations/${this.deleteLocation}`);
-            if (result.status == 200) {
+            if (result.status == 200 && !allCatsResults.includes(false) && !allItemsResults.includes(false)) {
                 // Show Success Message
                 this.successMessage = 'Delete Location Successfully';
                 this.errorMessage = '';

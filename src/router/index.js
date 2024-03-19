@@ -13,6 +13,7 @@ import ViewCategories from '@/components/menu/ViewCategories.vue'
 import AddNewCategory from '@/components/menu/AddNewCategory.vue'
 import UpdateCategory from '@/components/menu/UpdateCategory.vue'
 import DeleteCategory from '@/components/menu/DeleteCategory.vue'
+import DeleteAllCategories from '@/components/menu/DeleteAllCategories.vue'
 import ErrorPageView from '../views/ErrorPageView.vue'
 
 const routes = [
@@ -96,6 +97,11 @@ const routes = [
     path: '/menu/categories/delete/:locationId/:catId',
     name: 'DeleteCategory',
     component: DeleteCategory
+  },
+  {
+    path: '/menu/categories/delete-all/:locationId',
+    name: 'DeleteAllCategories',
+    component: DeleteAllCategories
   },
   // Stays Last
   {

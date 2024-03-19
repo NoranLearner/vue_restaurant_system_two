@@ -33,67 +33,9 @@
       "phone": "123.456.789",
       "address": "Cairo",
       "userId": "30ba"
-    },
-    {
-      "id": "86e4",
-      "name": "Noreldin Restaurant",
-      "phone": "123.456.789",
-      "address": "Taha Elhakim",
-      "userId": "913c"
-    },
-    {
-      "id": "362d",
-      "name": "Sory Restaurant",
-      "phone": "01234567891",
-      "address": "Elnady",
-      "userId": "913c"
-    },
-    {
-      "name": "Burger King",
-      "phone": "123.456.789.12",
-      "address": "Egypt",
-      "userId": "913c",
-      "id": "c77c"
     }
   ],
-  "categories": [
-    {
-      "id": "1",
-      "name": "Breakfast",
-      "locationId": "c77c",
-      "userId": "913c"
-    },
-    {
-      "id": "2",
-      "name": "Lunch",
-      "locationId": "c77c",
-      "userId": "913c"
-    },
-    {
-      "id": "3",
-      "name": "Dinner",
-      "locationId": "c77c",
-      "userId": "913c"
-    },
-    {
-      "name": "Drinks",
-      "userId": "913c",
-      "locationId": "c77c",
-      "id": "a505"
-    },
-    {
-      "id": "a821",
-      "name": "ARB",
-      "userId": "913c",
-      "locationId": "c77c"
-    },
-    {
-      "id": "28a2",
-      "name": "Lebanese food",
-      "userId": "913c",
-      "locationId": "c77c"
-    }
-  ],
+  "categories": [],
   "items": [
     {
       "name": "Tuna Sandwich",
@@ -104,16 +46,6 @@
       "locId": "a66b",
       "userId": "30ba",
       "id": "1"
-    },
-    {
-      "name": "Burger Sandwich",
-      "price": "50.00",
-      "qty": 60,
-      "description": "Good Food",
-      "catId": "2",
-      "locId": "c77c",
-      "userId": "913c",
-      "id": "2"
     }
   ]
 }

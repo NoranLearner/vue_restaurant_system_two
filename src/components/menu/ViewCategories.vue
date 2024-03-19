@@ -29,9 +29,9 @@
                     List Of Categories ({{ numOfCategories }})
                 </span>
                 <span class="float-end">
-                    <!-- <router-link :to="{ name: '', params: { locationId: locId } }">
+                    <router-link :to="{ name: 'DeleteAllCategories', params: { locationId: locationId } }">
                         <button class="btn btn-danger text-white">Delete All Categories</button>
-                    </router-link> -->
+                    </router-link>
                 </span>
             </caption>
             <thead class="table-light">

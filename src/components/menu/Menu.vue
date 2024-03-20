@@ -10,7 +10,9 @@
                 <button type="button" class="btn btn-secondary float-start">View/Add Categories</button>
             </router-link>
 
-            <button type="button" class="btn btn-secondary float-end" v-if="numOfCategories > 0">Add New Items</button>
+            <router-link :to="{ name: 'AddNewItem', params: { locationId: locationId } }">
+                <button type="button" class="btn btn-secondary float-end" v-if="numOfCategories > 0">Add New Items</button>
+            </router-link>
 
         </div>
 

@@ -15,6 +15,7 @@ import UpdateCategory from '@/components/menu/UpdateCategory.vue'
 import DeleteCategory from '@/components/menu/DeleteCategory.vue'
 import DeleteAllCategories from '@/components/menu/DeleteAllCategories.vue'
 import AddNewItem from '@/components/menu/AddNewItem.vue'
+import UpdateItem from '@/components/menu/UpdateItem.vue'
 import ErrorPageView from '../views/ErrorPageView.vue'
 
 const routes = [
@@ -108,6 +109,11 @@ const routes = [
     path: '/menu/items/add/:locationId',
     name: 'AddNewItem',
     component: AddNewItem
+  },
+  {
+    path: '/menu/items/update/:locationId/:itemId',
+    name: 'UpdateItem',
+    component: UpdateItem
   },
   // Stays Last
   {

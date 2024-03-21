@@ -7,6 +7,7 @@ const state = {
   isUserLoggedIn: "",
   LoggedInUserId: "",
   numOfCategories: "",
+  listOfItems: [],
   listOfCategories: [],
   listOfLocations: [],
 };
@@ -51,6 +52,15 @@ const mutations = {
     if (result.status == 200) {
       state.listOfCategories = result.data;
       if (state.listOfCategories.length !== 1) {
+        this.commit("redirectTo", payload.redirectToPage);
+      }
+    }
+  },
+  async canUserAccessThisItem(state, payload) {
+    let result = await axios.get(`http://localhost:3000/items?userId=${payload.userIdIs}&locationId=${payload.locationIdIs}&id=${payload.itemIdIs}`);
+    if (result.status == 200) {
+      state.listOfItems = result.data;
+      if (state.listOfItems.length < 1) {
         this.commit("redirectTo", payload.redirectToPage);
       }
     }

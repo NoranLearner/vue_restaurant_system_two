@@ -73,7 +73,13 @@
                                     <button class="btn btn-success float-start">Update</button>
                                 </router-link>
 
+                                <router-link :to="{name: 'DeleteItem',params: { locationId: locationId, itemId: item.id }}">
+                                    <button class="btn btn-danger float-end">Delete</button>
+                                </router-link>
+
                             </div>
+
+                            <div class="clearfix"></div>
 
                         </div>
 

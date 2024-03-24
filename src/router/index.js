@@ -17,6 +17,7 @@ import DeleteAllCategories from '@/components/menu/DeleteAllCategories.vue'
 import AddNewItem from '@/components/menu/AddNewItem.vue'
 import UpdateItem from '@/components/menu/UpdateItem.vue'
 import DeleteItem from '@/components/menu/DeleteItem.vue'
+import DeleteAllItems from '@/components/menu/DeleteAllItems.vue'
 import ErrorPageView from '../views/ErrorPageView.vue'
 
 const routes = [
@@ -120,6 +121,11 @@ const routes = [
     path: '/menu/items/delete/:locationId/:itemId',
     name: 'DeleteItem',
     component: DeleteItem
+  },
+  {
+    path: '/menu/items/delete-all/:locationId',
+    name: 'DeleteAllItems',
+    component: DeleteAllItems
   },
   // Stays Last
   {

@@ -30,13 +30,13 @@
 
         <!-- ---------------------------------------- -->
 
-        <!-- <div class="mb-3" v-if="listOfUserCategories.length>0">
-            <router-link :to="{ name: 'delete-all-items', params: { locId: locationId } }">
+        <div class="mb-3" v-if="listOfUserCategories.length>0">
+            <router-link :to="{ name: 'DeleteAllItems', params: { locationId: locationId } }">
                 <button type="button" class="btn btn-danger">
                     Delete All Items
                 </button>
             </router-link>
-        </div> -->
+        </div>
 
         <!-- ---------------------------------------- -->
 
@@ -92,29 +92,6 @@
             </div>
 
         </div>
-
-        <!-- 
-            
-                    <div >
-                        <div :class="{ 'each-item': cat.id == item.catId }" >
-                            
-                            
-                                <router-link :to="{
-                name: 'delete-item',
-                params: { locationId: locationId, itemId: item.id }
-            }
-                ">
-                                    <button class="btn btn-danger float-end">Delete</button>
-                                </router-link>
-                            </div>
-                            <div class="clearfix"></div>
-                            <br />
-                        </div>
-                    </div>
-                    <hr />
-                </div>
-            </div>
-        -->
 
         <!-- ---------------------------------------- -->
 
